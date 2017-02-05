@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (4.2.0)
+  - LBTAComponents (0.1.9)
+  - SwipeNavigationController (2.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - LBTAComponents
+  - SwipeNavigationController
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  LBTAComponents: 9a5d314080d1f80208062ccc81a2d25225c5f572
+  SwipeNavigationController: 592681599a3105a44484e5b7af9055cee7a0d7b9
+
+PODFILE CHECKSUM: 966a82441e3724bb116e415dce3a43112ae64522
+
+COCOAPODS: 1.1.1

@@ -58,30 +58,9 @@ class NowPlayingViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if userState == "Host" {
-            
-            let parameters1: Parameters = [
-                "service_id": "201234458",
-                "hype_val": "0.12345",
-                "service_name": "apple_music"
-            ]
-            let requestURL1 = "http://auxparty.com/api/client/request/\(partyID)"
-            
-            print(requestURL1)
-            print(parameters1)
-            
-            Alamofire.request(requestURL1, method: HTTPMethod.post, parameters: parameters1, encoding: JSONEncoding.default).responseString(completionHandler: {
-                response in
-                print(response)
-            })
-
-            
-            
-            
-            
-            
             let parameters: Parameters = [
                 "key": partyKey,
-                "play_id": "201234458",
+                "play_id": "778788844",
                 "song_number": "10"
                 ]
             let requestURL = "http://auxparty.com/api/newtral/nowplaying/\(partyID)"

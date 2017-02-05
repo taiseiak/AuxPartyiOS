@@ -35,7 +35,7 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //Join the Party
     func joinParty(partyInfo: PartyRoom, user: String) {
-        print("joining party")
+        print("joining \(partyInfo.partyID as String)")
         
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
         
@@ -86,7 +86,7 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //Choosing the cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 1 {
+        if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier:cellId, for: indexPath) as! PostRequestCell
             
             cell.JoinPartyViewControllerDelegate = self

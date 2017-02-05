@@ -8,6 +8,7 @@
 
 import UIKit
 import LBTAComponents
+import Alamofire
 
 class SettingsViewController: UIViewController {
 
@@ -35,8 +36,27 @@ class SettingsViewController: UIViewController {
     }()
     
     func logOut() {
+        
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
         
+        let tbc = tabBarController as! MainTabBarController
+        let partyKey = tbc.partyKey
+        let user = tbc.userState
+        let partyID = tbc.partyID
+        
+        /*if user == "Host" {
+        
+            let parameters: Parameters = [
+                "key": partyKey
+                ]
+            let requestURL = "http://auxparty.com/api/host/close/\(partyID)"
+        
+            Alamofire.request(requestURL, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseData(completionHandler: {
+                response in
+                print(response)
+            })
+        }*/
+
         let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "HostOrJoin")
         appDelegate.window?.rootViewController = initialViewController
         appDelegate.window?.makeKeyAndVisible()

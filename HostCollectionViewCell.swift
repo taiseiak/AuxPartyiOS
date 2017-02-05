@@ -10,7 +10,8 @@
 import UIKit
 import LBTAComponents
 import Alamofire
-
+import StoreKit
+import MediaPlayer
 
 
 class HostCreationCell: UICollectionViewCell , UITextFieldDelegate {
@@ -66,7 +67,7 @@ class HostCreationCell: UICollectionViewCell , UITextFieldDelegate {
         
         //Creats party
         if partyNameView.text != "" {
-            createParty(partyName: partyNameView.text!, serviceName: "apple")
+            createParty(partyName: partyNameView.text!, serviceName: "apple_music")
         }
         
         return true
@@ -91,6 +92,29 @@ class HostCreationCell: UICollectionViewCell , UITextFieldDelegate {
     //Creates a party
     func createParty(partyName: String, serviceName: String) {
             
+            let serviceController = SKCloudServiceController()
+            serviceController.requestStorefrontIdentifier { (storefrontID, err) in
+                guard err == nil else {
+                    
+                    print("An error occured. Handle it here.")
+                    return
+                    
+                }
+                
+                guard let storefrontId = storefrontID, storefrontId.characters.count >= 6 else {
+                    
+                    print("Handle the error - the callback didn't contain a valid storefrontID.")
+                    return
+                    
+                }
+                
+                let indexRange = storefrontId.index(storefrontId.startIndex, offsetBy: 5)
+                let trimmedId = storefrontId.substring(to: indexRange)
+                
+                
+                print("Success! The user's storefront ID is: \(trimmedId)")
+                }
+            
             let parameters: Parameters = [
                 "user_name": partyName,
                 "service_name": serviceName,
@@ -101,6 +125,10 @@ class HostCreationCell: UICollectionViewCell , UITextFieldDelegate {
                 response in
                 print(response)
                 let readableJSON = response.result.value as! JSONStandard
+                print("created \(readableJSON["identifier"] as! String)")
+                let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+                
+                appDelegate.currentPartyKey = readableJSON["key"] as! String
                 self.joinParty(partyID: readableJSON["identifier"] as! String)
             })
     }
@@ -118,7 +146,6 @@ class HostCreationCell: UICollectionViewCell , UITextFieldDelegate {
                 if exist == true {
                     
                     let partyInformation = PartyRoom(partyID: readableJSON["identifier"] as! String!, partyName: readableJSON["user_name"] as! String!)
-                    print("first step")
                     
                     self.JoinPartyViewControllerDelegate?.joinParty(partyInfo: partyInformation, user: "Host")
                 } else {

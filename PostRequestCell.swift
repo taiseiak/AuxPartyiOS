@@ -33,6 +33,7 @@ class PostRequestCell: UICollectionViewCell , UITextFieldDelegate {
         tv.clearButtonMode = .whileEditing
         tv.returnKeyType = .join
         //tv.textAlignment = .center
+        tv.autocorrectionType = .no
         
         return tv
     }()
@@ -97,7 +98,6 @@ class PostRequestCell: UICollectionViewCell , UITextFieldDelegate {
                 if exist == true {
                     
                     let partyInformation = PartyRoom(partyID: readableJSON["identifier"] as! String!, partyName: readableJSON["user_name"] as! String!)
-                    print("first step")
                     
                     self.JoinPartyViewControllerDelegate?.joinParty(partyInfo: partyInformation, user: "Member")
                     

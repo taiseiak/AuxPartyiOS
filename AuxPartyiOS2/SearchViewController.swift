@@ -14,6 +14,7 @@ import LBTAComponents
 class SearchViewController: UIViewController, UISearchBarDelegate , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var partyID = ""
+    var userState = ""
     
     let searchBar = UISearchBar()
     
@@ -33,6 +34,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
         titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
         titleLabel.textColor = .orange
         //navigationItem.titleView = titleLabel
+        let tbc = self.tabBarController as! MainTabBarController
+        self.userState = tbc.userState
+        self.partyID = tbc.partyID
+        print(partyID)
         
         createSearchBar()
         
@@ -63,6 +68,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
     
     
     func callAlamoSong(searchString: String) {
+        
+        //let tbc = self.tabBarController as! MainTabBarController
+        //let storeFrontID = tbc.storeFrontID
         
         let escapedString = searchString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed)
         
@@ -100,10 +108,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
     }
     
     func requestSongToHost(partyID: String, songID: Int, serviceName: String) {
-        
-        let tbc = self.tabBarController as! MainTabBarController
-        self.partyID = tbc.partyID
-        print(partyID)
         
         let parameters: Parameters = [
         "service_id": String(songID),
@@ -167,70 +171,3 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
         view.addSubview(collectionView)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return songs.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let searchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! SearchCollectionViewCell
-        searchCell.albumArtworkView.image = songs[indexPath.row].mainImage
-        searchCell.songTitleLabel.text = songs[indexPath.row].name
-        searchCell.albumTitleLabel.text = String(songs[indexPath.row].trackID)
-        return searchCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("yay")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 74)
-    }
-}
-*/

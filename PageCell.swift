@@ -31,6 +31,7 @@ class PageCell: UICollectionViewCell {
         let tv = UITextView()
         tv.text = "sample text"
         tv.isEditable = false
+        tv.autocorrectionType = .no
         return tv
     }()
     

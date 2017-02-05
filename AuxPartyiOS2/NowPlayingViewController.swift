@@ -9,59 +9,126 @@
 import UIKit
 import Alamofire
 import LBTAComponents
+import StoreKit
+import MediaPlayer
 
 class NowPlayingViewController: UIViewController {
     
     var partyID = ""
     var userState = ""
+    var partyName = ""
+    var partyKey = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tbc = tabBarController as! MainTabBarController
+        partyID = tbc.partyID
+        userState = tbc.userState
+        partyName = tbc.partyName
+        partyKey = tbc.partyKey
+        self.partyInfoLabel.text = "\(partyName) (\(partyID)) - \(userState)"
         currentlyPlaying()
         setupViews()
     }
     
+    
     func currentlyPlaying() {
         
-        let tbc = tabBarController as! MainTabBarController
-        partyID = tbc.partyID
-        userState = tbc.userState
-        print(tbc.partyID)
-        print(partyID)
-        
-        Alamofire.request("http://auxparty.com/api/host/data/\(partyID)?count=5").responseJSON(completionHandler: {
+        Alamofire.request("http://auxparty.com/api/neutral/nowplaying/\(partyID)?count=5").responseJSON(completionHandler: {
             response in
             
-            print(response)
-            
             let readableJSON = response.result.value as! JSONStandard
-            let userName = readableJSON["user_name"] as! String
-            let identifier = readableJSON["identifier"] as! String
+            let isClosed = readableJSON["is_closed"] as! Bool
+            let playID = readableJSON["play_id"] as! String
             
-            self.partyInfoLabel.text = "\(userName) - ID: \(identifier) \(self.userState)"
+            print(isClosed)
+            print(playID)
             
-            
-            print(readableJSON)
+            if isClosed {
+                self.songInfoLabel.text = "party is closed"
+            } else if playID == "0" {
+                self.songInfoLabel.text = "No song in que"
+            } else {
+                self.songInfoLabel.text = playID
+            }
         })
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if userState == "Host" {
+            
+            let parameters1: Parameters = [
+                "service_id": "201234458",
+                "hype_val": "0.12345",
+                "service_name": "apple_music"
+            ]
+            let requestURL1 = "http://auxparty.com/api/client/request/\(partyID)"
+            
+            print(requestURL1)
+            print(parameters1)
+            
+            Alamofire.request(requestURL1, method: HTTPMethod.post, parameters: parameters1, encoding: JSONEncoding.default).responseString(completionHandler: {
+                response in
+                print(response)
+            })
+
+            
+            
+            
+            
+            
+            let parameters: Parameters = [
+                "key": partyKey,
+                "play_id": "201234458",
+                "song_number": "10"
+                ]
+            let requestURL = "http://auxparty.com/api/newtral/nowplaying/\(partyID)"
+            
+            Alamofire.request(requestURL, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseString(completionHandler: {
+                response in
+                print(response)
+            })
+
+        }
         currentlyPlaying()
     }
     
     func setupViews() {
         view.addSubview(partyInfoLabel)
         view.addSubview(albumArtworkView)
+        view.addSubview(songInfoLabel)
         
         partyInfoLabel.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 27, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
         albumArtworkView.frame = CGRect(x: Int((view.frame.width / 2)-((albumArtworkView.image?.size.width)!/2)), y: Int((view.frame.height / 2)-((albumArtworkView.image?.size.height)!/2)), width: Int((albumArtworkView.image?.size.width)!), height: Int((albumArtworkView.image?.size.height)!))
+        songInfoLabel.anchor(albumArtworkView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
+        
+        if userState == "Host" {
+            appleMusicPlayTrackId(ids: ["201234458"])
+        }
+        
+    }
+    
+    let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer()
+    
+    func appleMusicPlayTrackId(ids:[String]) {
+        systemMusicPlayer.setQueueWithStoreIDs(ids)
+        systemMusicPlayer.play()
     }
     
     //Artist label
     let partyInfoLabel: UILabel = {
         let label = UILabel()
         label.text = ""
+        label.textColor = .gray
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let songInfoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "song not yet playing"
         label.textColor = .gray
         label.textAlignment = .center
         return label

@@ -8,12 +8,33 @@
 
 import UIKit
 
+
 class MainTabBarController: UITabBarController {
+    
+    func setNewPartyID(newpartyID: String) {
+        print(newpartyID)
+        self.partyID = newpartyID
+        
+    }
+    
+    var partyID = "has not changed"
+    var userState = "has not been determined"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.partyID = appDelegate.currentPartyID
+        self.userState = appDelegate.currentUserState
+        print("maintabbar")
+        
+        /*if partyID == "has not changed" {
+            let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+            
+            let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "HostOrJoin")
+            appDelegate.window?.rootViewController = initialViewController
+            appDelegate.window?.makeKeyAndVisible()
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

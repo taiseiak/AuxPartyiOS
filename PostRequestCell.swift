@@ -15,8 +15,6 @@ import Alamofire
 
 class PostRequestCell: UICollectionViewCell , UITextFieldDelegate {
     
-    
-    //var searchDataSource: SearchDataSource?
     weak var JoinPartyViewControllerDelegate: JoinPartyViewControllerDelegate?
     
     override init(frame: CGRect) {
@@ -101,7 +99,7 @@ class PostRequestCell: UICollectionViewCell , UITextFieldDelegate {
                     let partyInformation = PartyRoom(partyID: readableJSON["identifier"] as! String!, partyName: readableJSON["user_name"] as! String!)
                     print("first step")
                     
-                    self.JoinPartyViewControllerDelegate?.joinParty(partyInfo: partyInformation)
+                    self.JoinPartyViewControllerDelegate?.joinParty(partyInfo: partyInformation, user: "Member")
                     
                 } else {
                     

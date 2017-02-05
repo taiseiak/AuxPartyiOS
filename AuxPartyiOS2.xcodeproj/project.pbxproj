@@ -65,7 +65,7 @@
 		646D98381E45A6A5003C311F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		646D983A1E45A6D4003C311F /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		646D983C1E45A6F2003C311F /* PostRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequestCell.swift; sourceTree = "<group>"; };
-		646D983E1E45AA07003C311F /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		646D983E1E45AA07003C311F /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = ../MainTabBarController.swift; sourceTree = "<group>"; };
 		646D98401E466261003C311F /* HostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCollectionViewCell.swift; sourceTree = "<group>"; };
 		72EBC74C0F0F1A7648FE42DE /* Pods-AuxPartyiOS2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuxPartyiOS2.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuxPartyiOS2/Pods-AuxPartyiOS2.release.xcconfig"; sourceTree = "<group>"; };
 		ADDC32BF9F08C1B370182850 /* Pods_AuxPartyiOS2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuxPartyiOS2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,8 +137,6 @@
 		645CA6CE1E2830F100782097 = {
 			isa = PBXGroup;
 			children = (
-				646D983E1E45AA07003C311F /* MainTabBarController.swift */,
-				646D98371E45A657003C311F /* Host or Join */,
 				645CA6D91E2830F100782097 /* AuxPartyiOS2 */,
 				645CA6F01E2830F200782097 /* AuxPartyiOS2Tests */,
 				645CA6FB1E2830F200782097 /* AuxPartyiOS2UITests */,
@@ -161,8 +159,10 @@
 		645CA6D91E2830F100782097 /* AuxPartyiOS2 */ = {
 			isa = PBXGroup;
 			children = (
+				646D983E1E45AA07003C311F /* MainTabBarController.swift */,
 				645CA6DA1E2830F100782097 /* AppDelegate.swift */,
 				642B68D51E283A2800D57075 /* Structs.swift */,
+				646D98371E45A657003C311F /* Host or Join */,
 				642B68D41E28354800D57075 /* Search */,
 				6441F2281E2B2DAA0058A047 /* Now Playing */,
 				6441F2291E2B2DB60058A047 /* Settings */,
@@ -197,10 +197,27 @@
 			children = (
 				646D98381E45A6A5003C311F /* LoginViewController.swift */,
 				646D983A1E45A6D4003C311F /* PageCell.swift */,
-				646D983C1E45A6F2003C311F /* PostRequestCell.swift */,
-				646D98401E466261003C311F /* HostCollectionViewCell.swift */,
+				646D98431E4666F0003C311F /* Join */,
+				646D98421E4666E9003C311F /* Host */,
 			);
 			name = "Host or Join";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		646D98421E4666E9003C311F /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				646D98401E466261003C311F /* HostCollectionViewCell.swift */,
+			);
+			name = Host;
+			sourceTree = "<group>";
+		};
+		646D98431E4666F0003C311F /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				646D983C1E45A6F2003C311F /* PostRequestCell.swift */,
+			);
+			name = Join;
 			sourceTree = "<group>";
 		};
 		9607B152055FCDD3446A580A /* Pods */ = {

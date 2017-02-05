@@ -11,6 +11,9 @@ import Alamofire
 import LBTAComponents
 
 class NowPlayingViewController: UIViewController {
+    
+    var partyID = ""
+    var userState = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,13 @@ class NowPlayingViewController: UIViewController {
     
     func currentlyPlaying() {
         
-        Alamofire.request("http://auxparty.com/api/host/data/aaaaa?count=5").responseJSON(completionHandler: {
+        let tbc = tabBarController as! MainTabBarController
+        partyID = tbc.partyID
+        userState = tbc.userState
+        print(tbc.partyID)
+        print(partyID)
+        
+        Alamofire.request("http://auxparty.com/api/host/data/\(partyID)?count=5").responseJSON(completionHandler: {
             response in
             
             print(response)
@@ -30,7 +39,7 @@ class NowPlayingViewController: UIViewController {
             let userName = readableJSON["user_name"] as! String
             let identifier = readableJSON["identifier"] as! String
             
-            self.partyInfoLabel.text = "\(userName) - ID: \(identifier)"
+            self.partyInfoLabel.text = "\(userName) - ID: \(identifier) \(self.userState)"
             
             
             print(readableJSON)

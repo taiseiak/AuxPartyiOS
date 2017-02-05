@@ -10,7 +10,10 @@ import UIKit
 import Alamofire
 import LBTAComponents
 
+
 class SearchViewController: UIViewController, UISearchBarDelegate , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var partyID = ""
     
     let searchBar = UISearchBar()
     
@@ -97,6 +100,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
     }
     
     func requestSongToHost(partyID: String, songID: Int, serviceName: String) {
+        
+        let tbc = self.tabBarController as! MainTabBarController
+        self.partyID = tbc.partyID
+        print(partyID)
+        
         let parameters: Parameters = [
         "service_id": String(songID),
         "service_name": serviceName,
@@ -137,7 +145,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let cell = collectionView.cellForItem(at: indexPath)
-        requestSongToHost(partyID: "aaaaa", songID: songs[indexPath.row].trackID, serviceName: "apple_music")
+        requestSongToHost(partyID: partyID, songID: songs[indexPath.row].trackID, serviceName: "apple_music")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

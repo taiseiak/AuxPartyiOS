@@ -9,11 +9,13 @@
 import UIKit
 
 protocol JoinPartyViewControllerDelegate: class {
-    func joinParty(partyInfo: PartyRoom)
+    func joinParty(partyInfo: PartyRoom, user: String)
     func showNotInAlert()
 }
 
+
 class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, JoinPartyViewControllerDelegate {
+    
     
     
     //Set up collection view
@@ -32,25 +34,19 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
     }()
     
     //Join the Party
-    func joinParty(partyInfo: PartyRoom) {
+    func joinParty(partyInfo: PartyRoom, user: String) {
         print("joining party")
-        //self.performSegue(withIdentifier: "TabBarController", sender: nil)
         
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+        
+        appDelegate.currentPartyID = partyInfo.partyID
+        appDelegate.currentUserState = user
         
         let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "TabBarController")
         appDelegate.window?.rootViewController = initialViewController
         appDelegate.window?.makeKeyAndVisible()
     }
-    
-    /*// Showing the NowPlaying
-    func nowPlayingController() {
-        let nowPlayingController = tabBarController
-        
-        present(nowPlayingController, animated: true, completion: {
-            //do something leter?
-        })
-    }*/
+
     
     // Close keyboard when user scrolls
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -69,6 +65,7 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //Cell ID's
     let cellId = "cellID"
+    let hostCellId = "hostCellID"
     
     //Load view
     override func viewDidLoad() {
@@ -79,6 +76,7 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         collectionView.register(PostRequestCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(HostCreationCell.self, forCellWithReuseIdentifier: hostCellId)
     }
     
     //Items in collectionview
@@ -88,11 +86,18 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //Choosing the cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:cellId, for: indexPath) as! PostRequestCell
-        
-        cell.JoinPartyViewControllerDelegate = self
-        
-        return cell
+        if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:cellId, for: indexPath) as! PostRequestCell
+            
+            cell.JoinPartyViewControllerDelegate = self
+            
+            return cell
+        }
+        let hostCell = collectionView.dequeueReusableCell(withReuseIdentifier:hostCellId, for: indexPath) as! HostCreationCell
+            
+        hostCell.JoinPartyViewControllerDelegate = self
+            
+        return hostCell
     }
     
     //Size of collectionview

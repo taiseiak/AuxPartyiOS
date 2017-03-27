@@ -85,8 +85,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
             
             let readableJSON = response.result.value as! JSONStandard
             
-            print(readableJSON)
-            
             if let tracks = readableJSON["results"] as? Array<AnyObject>{
                 for i in 0..<tracks.count{
                     let item = tracks[i] as! JSONStandard
@@ -110,7 +108,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate , UICollection
     func requestSongToHost(partyID: String, songID: Int, serviceName: String) {
         
         let parameters: Parameters = [
-        "service_id": String(songID),
+        "play_id": String(songID),
         "service_name": serviceName,
         "hype_val": "0.12345"
         ]

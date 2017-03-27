@@ -10,6 +10,7 @@
 		642B68D21E28353E00D57075 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B68D01E28353E00D57075 /* SearchCollectionViewCell.swift */; };
 		642B68D61E283A2800D57075 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642B68D51E283A2800D57075 /* Structs.swift */; };
 		6441F2271E2B2B440058A047 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6441F2261E2B2B440058A047 /* SettingsViewController.swift */; };
+		6443A13F1E47F25E00D7637F /* PostRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443A13E1E47F25E00D7637F /* PostRequestCell.swift */; };
 		645CA6DB1E2830F100782097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645CA6DA1E2830F100782097 /* AppDelegate.swift */; };
 		645CA6DD1E2830F100782097 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645CA6DC1E2830F100782097 /* SearchViewController.swift */; };
 		645CA6DF1E2830F100782097 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645CA6DE1E2830F100782097 /* NowPlayingViewController.swift */; };
@@ -20,7 +21,6 @@
 		645CA6FD1E2830F200782097 /* AuxPartyiOS2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645CA6FC1E2830F200782097 /* AuxPartyiOS2UITests.swift */; };
 		646D98391E45A6A5003C311F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D98381E45A6A5003C311F /* LoginViewController.swift */; };
 		646D983B1E45A6D4003C311F /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D983A1E45A6D4003C311F /* PageCell.swift */; };
-		646D983D1E45A6F2003C311F /* PostRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D983C1E45A6F2003C311F /* PostRequestCell.swift */; };
 		646D983F1E45AA07003C311F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D983E1E45AA07003C311F /* MainTabBarController.swift */; };
 		646D98411E466261003C311F /* HostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646D98401E466261003C311F /* HostCollectionViewCell.swift */; };
 		9672152655E7CA514CAA4948 /* Pods_AuxPartyiOS2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9CDB83B245BACC3FAA73E8 /* Pods_AuxPartyiOS2.framework */; };
@@ -48,6 +48,7 @@
 		642B68D01E28353E00D57075 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		642B68D51E283A2800D57075 /* Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		6441F2261E2B2B440058A047 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6443A13E1E47F25E00D7637F /* PostRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostRequestCell.swift; path = AuxPartyiOS2/PostRequestCell.swift; sourceTree = "<group>"; };
 		645CA6D71E2830F100782097 /* AuxPartyiOS2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuxPartyiOS2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		645CA6DA1E2830F100782097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		645CA6DC1E2830F100782097 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -62,11 +63,10 @@
 		645CA6F81E2830F200782097 /* AuxPartyiOS2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuxPartyiOS2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		645CA6FC1E2830F200782097 /* AuxPartyiOS2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxPartyiOS2UITests.swift; sourceTree = "<group>"; };
 		645CA6FE1E2830F200782097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		646D98381E45A6A5003C311F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		646D983A1E45A6D4003C311F /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
-		646D983C1E45A6F2003C311F /* PostRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequestCell.swift; sourceTree = "<group>"; };
-		646D983E1E45AA07003C311F /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = ../MainTabBarController.swift; sourceTree = "<group>"; };
-		646D98401E466261003C311F /* HostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCollectionViewCell.swift; sourceTree = "<group>"; };
+		646D98381E45A6A5003C311F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = AuxPartyiOS2/LoginViewController.swift; sourceTree = "<group>"; };
+		646D983A1E45A6D4003C311F /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageCell.swift; path = AuxPartyiOS2/PageCell.swift; sourceTree = "<group>"; };
+		646D983E1E45AA07003C311F /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		646D98401E466261003C311F /* HostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HostCollectionViewCell.swift; path = AuxPartyiOS2/HostCollectionViewCell.swift; sourceTree = "<group>"; };
 		72EBC74C0F0F1A7648FE42DE /* Pods-AuxPartyiOS2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuxPartyiOS2.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuxPartyiOS2/Pods-AuxPartyiOS2.release.xcconfig"; sourceTree = "<group>"; };
 		ADDC32BF9F08C1B370182850 /* Pods_AuxPartyiOS2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuxPartyiOS2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9CDB83B245BACC3FAA73E8 /* Pods_AuxPartyiOS2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuxPartyiOS2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +215,7 @@
 		646D98431E4666F0003C311F /* Join */ = {
 			isa = PBXGroup;
 			children = (
-				646D983C1E45A6F2003C311F /* PostRequestCell.swift */,
+				6443A13E1E47F25E00D7637F /* PostRequestCell.swift */,
 			);
 			name = Join;
 			sourceTree = "<group>";
@@ -425,8 +425,8 @@
 				646D983F1E45AA07003C311F /* MainTabBarController.swift in Sources */,
 				645CA6DB1E2830F100782097 /* AppDelegate.swift in Sources */,
 				642B68D61E283A2800D57075 /* Structs.swift in Sources */,
-				646D983D1E45A6F2003C311F /* PostRequestCell.swift in Sources */,
 				642B68D21E28353E00D57075 /* SearchCollectionViewCell.swift in Sources */,
+				6443A13F1E47F25E00D7637F /* PostRequestCell.swift in Sources */,
 				645CA6DD1E2830F100782097 /* SearchViewController.swift in Sources */,
 				646D98411E466261003C311F /* HostCollectionViewCell.swift in Sources */,
 				646D983B1E45A6D4003C311F /* PageCell.swift in Sources */,

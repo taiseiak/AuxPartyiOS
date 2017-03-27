@@ -77,8 +77,6 @@ class PostRequestCell: UICollectionViewCell , UITextFieldDelegate {
         
         partyIDView.anchor(topAnchor, left: leftAnchor, bottom: nil
             , right: rightAnchor, topConstant: 200, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0 , heightConstant: 50)
-        
-        
     }
     
     

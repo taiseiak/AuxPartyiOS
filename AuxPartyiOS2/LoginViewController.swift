@@ -13,10 +13,7 @@ protocol JoinPartyViewControllerDelegate: class {
     func showNotInAlert()
 }
 
-
 class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, JoinPartyViewControllerDelegate {
-    
-    
     
     //Set up collection view
     lazy var collectionView: UICollectionView = {
@@ -46,7 +43,6 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
         appDelegate.window?.rootViewController = initialViewController
         appDelegate.window?.makeKeyAndVisible()
     }
-
     
     // Close keyboard when user scrolls
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -94,7 +90,7 @@ class JoinPartyViewController: UIViewController, UICollectionViewDataSource, UIC
             return cell
         }
         let hostCell = collectionView.dequeueReusableCell(withReuseIdentifier:hostCellId, for: indexPath) as! HostCreationCell
-            
+        
         hostCell.JoinPartyViewControllerDelegate = self
             
         return hostCell
